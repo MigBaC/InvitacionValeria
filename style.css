@@ -1,0 +1,206 @@
+:root {
+    --bg-color: #f8f8f8;
+    --text-brown: #5a3e2b;
+    --gold-muted: #b59a6d;
+    --white-paper: rgba(255, 255, 255, 0.98);
+}
+
+* { box-sizing: border-box; }
+
+body { 
+    margin: 0; 
+    font-family: 'Montserrat', sans-serif; 
+    background-color: var(--bg-color);
+    background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+    color: var(--text-brown); 
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body.no-scroll { overflow: hidden; }
+
+
+
+/* MARCO FLORAL */
+.marco-floral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Ajustamos el borde para que sea visible y use la imagen */
+    border: 1px solid transparent; 
+    border-image: url('marcos2.png') 100 round; /* Asegúrate que el path sea correcto */
+    
+    /* El z-index debe ser el más alto de todos */
+    z-index: 9999; 
+    
+    /* Importante: permite que los clics pasen a través del marco */
+    pointer-events: none; 
+    
+    /* Para asegurar que cubra todo el viewport */
+    box-sizing: border-box;
+}
+
+/* Ajuste opcional para móviles para que el marco no tape tanto */
+@media (max-width: 600px) {
+    .marco-floral {
+        border-width: 20px;
+    }
+}
+
+
+
+
+
+
+/* OVERLAY */
+.overlay { 
+    position: fixed; 
+    inset: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    z-index: 1000;
+    background: var(--bg-color);
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.overlay-hidden { transform: translateY(-100%); }
+
+.nombre-principal {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(60px, 15vw, 100px);
+    color: var(--text-brown);
+    margin: 10px 0;
+}
+
+/* --- NUEVO CONTADOR --- */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.time-box {
+    border-bottom: 2px solid var(--gold-muted);
+    min-width: 70px;
+    padding-bottom: 5px;
+}
+
+.time-box span {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 300;
+}
+
+.time-box small {
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--gold-muted);
+}
+
+/* --- PANELES --- */
+.main-screen { 
+    padding: 80px 20px; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.main-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1000px;
+}
+
+.hidden { display: none !important; }
+
+.glass-panel { 
+    background: var(--white-paper); 
+    border: 1px solid rgba(181, 154, 109, 0.2);
+    padding: 40px 30px; 
+    width: 400px; 
+    max-width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* --- UBICACIÓN CIRCULAR & LINK --- */
+.no-style-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+}
+
+.map-container-circular {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--gold-muted);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.img-circular {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.map-overlay-circular {
+    position: absolute;
+    inset: 0;
+    background: rgba(90, 62, 43, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.map-container-circular:hover .map-overlay-circular { opacity: 1; }
+.map-container-circular:hover .img-circular { transform: scale(1.1); }
+
+/* --- OTROS --- */
+.cursive { font-family: 'Great Vibes', cursive; font-size: 40px; color: var(--text-brown); margin-bottom: 20px; }
+
+.gold-sep {
+    border: 0; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-muted), transparent);
+    margin: 25px 0;
+}
+
+.btn-abrir, .btn-confirm {
+    background: var(--text-brown);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-confirm:hover { background: var(--gold-muted); }
+
+#nIn, #cSel {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat';
+}
+
+.date-header strong { display: block; font-size: 1.4rem; margin: 10px 0; }

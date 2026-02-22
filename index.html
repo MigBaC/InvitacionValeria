@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>XV Años - Valeria Unda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="no-scroll">
+
+    <div class="marco-floral"></div>
+
+    <div id="overlay-invitacion" class="overlay">
+        <div class="header-content fade-in">
+            <p class="celebration-label">ESTÁS INVITADO</p>
+            <p class="subtitle-xv">MIS <span class="xv-romano">XV</span> AÑOS</p>
+            <h1 class="nombre-principal">Valeria Unda</h1>
+            
+            <div class="frase-inspiracional">
+                "Gracias a Dios por el regalo de la vida y a mis padres Luis Unda y Alexandra Barragan 
+                por siempre caminar a mi lado. <br>Mi felicidad no estaría completa sin tu presencia en mi fiesta."
+            </div>
+            <div id="countdown" class="countdown-container">
+                <div class="time-box"><span id="days">00</span><small>Días</small></div>
+                <div class="time-box"><span id="hours">00</span><small>Hrs</small></div>
+                <div class="time-box"><span id="minutes">00</span><small>Min</small></div>          
+            </div>
+
+            <button class="btn-abrir pulse-effect" onclick="abrirInvitacion()"> DESCUBRIR INVITACIÓN </button>
+        </div>
+    </div>
+
+    <div id="contenido-invitacion" class="main-screen hidden">
+        <div class="main-wrapper">
+            
+            <div class="glass-panel fade-in-up">
+                <h3 class="cursive">Lugar & Recepción</h3>
+                <a href="https://maps.app.goo.gl/GNDUW2Vvz5PMnuxY6" target="_blank" class="no-style-link">
+                    <div class="map-container-circular">
+                        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=500" alt="Club Biblos" class="img-circular">
+                        <div class="map-overlay-circular"><span>VER MAPA</span></div>
+                    </div>
+                    <p class="venue-title"><strong>Club Biblos</strong></p>
+                    <p class="venue-text">Avenida Líbano, Guayaquil</p>
+                </a>
+                <hr class="gold-sep">
+                <p class="dress-title">CÓDIGO DE VESTIMENTA</p>
+                <p class="dress-type">Formal / Gala</p>
+                <button class="btn-confirm" style="margin-top:15px" onclick="agregarACalendario()">📅 AGENDAR EVENTO</button>
+            </div>
+
+            <div class="glass-panel fade-in-up" style="animation-delay: 0.2s;">
+                <div class="date-header">
+                    <span class="year-label">04 de Abril, 2026</span>
+                    <strong class="full-date">19:00 Horas</strong>
+                </div>
+                
+                <hr class="gold-sep">
+
+                <div id="confirm-area">
+                    <div id="step1">
+                        <span class="gold-badge">RSVP</span>
+                        <h4 style="margin: 15px 0;">CONFIRMACIÓN</h4>
+                        <input type="text" id="nIn" placeholder="Tu nombre y apellido">
+                        <button class="btn-confirm" onclick="buscarInvitado()">Verificar Lista</button>
+                    </div>
+                    
+                    <div id="step2" style="display:none">
+                        <p id="welcome-txt"></p>
+                        <p id="max-pases-hint" class="hint-text"></p>
+                        <select id="cSel"></select>
+                        <button class="btn-confirm-final" onclick="confirmarFinal()">Confirmar Asistencia</button>
+                    </div>
+
+                    <div id="success-ticket" class="ticket-view hidden">
+                        <div class="ticket-info">
+                            <p class="ticket-name" id="final-name"></p>
+                            <p class="ticket-status"> ASISTENCIA CONFIRMADA</p>
+                            <div class="ticket-divider"></div>
+                            <p id="final-pases" class="ticket-count"></p>
+                        </div>
+                    </div>
+                    <p id="msg"></p>
+                </div>
+
+                <hr class="gold-sep">
+
+                <div class="gift-section-mini">
+                    <div class="gift-icon">✉️</div>
+                    <h3 class="cursive" style="font-size: 28px;">Lluvia de Sobres</h3>
+                    <p class="gift-text">
+                        Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo, 
+                        agradecería que sea en efectivo a través de lluvia de sobres el día del evento.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
