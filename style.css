@@ -19,7 +19,41 @@ body {
 
 body.no-scroll { overflow: hidden; }
 
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
 
+.btn-confirm-final {
+    background: var(--text-brown);
+    color: white;
+    border: none;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-decline {
+    background: transparent;
+    color: #888;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-decline:hover {
+    background: #f0f0f0;
+    color: #555;
+}
 
 /* MARCO FLORAL */
 .marco-floral {
