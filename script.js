@@ -19,6 +19,37 @@ function iniciarReloj() {
     }, 1000);
 }
 
+async function declinarAsistencia() {
+    if (!confirm("¿Estás seguro de que no podrás asistir? Nos hará falta tu presencia.")) return;
+
+    const btn = document.querySelector('.btn-decline');
+    const btnConfirm = document.querySelector('.btn-confirm-final');
+    
+    btn.disabled = true;
+    btnConfirm.disabled = true;
+    btn.innerText = "ENVIANDO...";
+
+    try {
+        // Enviamos '0' confirmados para indicar que no asiste
+        await fetch(`${URL_WEB_APP}?action=confirmar&fila=${window.datosInvitado.fila}&confirmados=0`, { mode: 'no-cors' });
+        
+        // Personalizamos la vista final
+        document.getElementById('step2').style.display = 'none';
+        const ticket = document.getElementById('success-ticket');
+        ticket.classList.remove('hidden');
+        
+        document.getElementById('final-name').innerText = window.datosInvitado.nombre;
+        document.getElementById('final-pases').innerText = "Gracias por avisarnos. ¡Te extrañaremos!";
+        document.querySelector('.ticket-status').innerText = "CANCELACIÓN REGISTRADA";
+        document.querySelector('.ticket-status').style.color = "#888"; 
+        
+    } catch (e) { 
+        alert("Hubo un error al registrar tu respuesta."); 
+        btn.disabled = false; 
+        btn.innerText = "No podré asistir";
+    }
+}
+
 async function buscarInvitado() {
     const nIn = document.getElementById('nIn');
     const msg = document.getElementById('msg');
